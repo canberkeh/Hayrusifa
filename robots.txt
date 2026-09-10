@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hayrusifa.com.tr/sitemap.xml
