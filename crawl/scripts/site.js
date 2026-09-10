@@ -53,6 +53,44 @@
     });
   }
 
+  // ---- scroll ile fade-in (reveal) ----------------------------------
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+    var SEL = [
+      '.band-head', '.mtiles > *', '.ctiles > *', '.cards > *', '.pills > .pill',
+      '.strip-grid > *', '.cta-in > *', '.hero-copy > *',
+      '.subsec', '.side-card', '.ci-row', '.map-card',
+      '.post-feat', '.prose > h2', '.post-cta', '.pn-wrap',
+      '.page-head > *', '.linklist'
+    ].join(',');
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -6% 0px' });
+
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var main = document.getElementById('main') || document;
+    var perParent = new WeakMap();
+    Array.prototype.forEach.call(main.querySelectorAll(SEL), function (el) {
+      // ekranda görünen (above-the-fold) öğeler animasyonsuz kalsın
+      if (el.getBoundingClientRect().top < vh * 0.88) return;
+      el.classList.add('reveal');
+      // aynı ebeveyn içinde hafif kademeli gecikme
+      var p = el.parentNode;
+      var i = perParent.get(p) || 0;
+      perParent.set(p, i + 1);
+      if (i > 0) el.style.transitionDelay = Math.min(i * 70, 350) + 'ms';
+      io.observe(el);
+    });
+  })();
+
   // ---- tüm yazılar: arama + kategori süzme ----------------------------
   var q = document.getElementById('q');
   var catf = document.getElementById('catf');

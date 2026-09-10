@@ -318,9 +318,8 @@ p{margin:0 0 1rem}
   .foot-bot{flex-direction:column;gap:6px}
 }
 
-/* anasayfa: yumuşak bölüm kaydırması (Wix şablonu hissi) — asla kilitlemez */
-:root.home{scroll-snap-type:y proximity;scroll-padding-top:70px}
-:root.home body.home .hero,
-:root.home body.home main>section{scroll-snap-align:start;scroll-snap-stop:normal}
-@media(prefers-reduced-motion:reduce){:root.home{scroll-snap-type:none}}
-@media(max-width:720px){:root.home{scroll-padding-top:60px}}
+/* scroll ile fade-in (reveal) — .reveal yalnızca JS ile eklenir, JS yoksa hiçbir şey gizlenmez */
+.reveal{opacity:0;transform:translateY(20px);
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1;transform:none;transition:none}}
