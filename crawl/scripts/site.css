@@ -294,17 +294,33 @@ p{margin:0 0 1rem}
 }
 @media(max-width:720px){
   .nav-tgl{display:block;margin-left:auto}
-  .nav{position:fixed;inset:70px 0 auto 0;background:var(--lime);flex-direction:column;
-    align-items:stretch;gap:0;padding:8px 20px 22px;border-bottom:1px solid var(--lime-d);
-    box-shadow:var(--shadow);display:none;margin-left:0}
+  /* açık mobil menü: header altında tam yükseklik, kendi içinde kaydırılabilir */
+  .nav{position:fixed;inset:70px 0 0 0;background:var(--lime);flex-direction:column;
+    align-items:stretch;gap:0;padding:8px 20px calc(22px + env(safe-area-inset-bottom));
+    border-top:1px solid var(--lime-d);box-shadow:var(--shadow);display:none;margin-left:0;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
   .nav.open{display:flex}
-  .nav>a,.has-dd>a{padding:.85rem .4rem;border-bottom:1px solid var(--lime-d)}
-  .has-dd .dd{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;
-    border:none;padding:.3rem 0 .6rem 1rem;min-width:0}
-  .nav-cta{margin-top:.8rem;text-align:center}
+  body.nav-open{overflow:hidden}
+  .nav>a,.has-dd>a{padding:.9rem .4rem;border-bottom:1px solid var(--lime-d)}
+  /* alt menü: mobilde varsayılan kapalı, dokununca açılır */
+  .has-dd>a{display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+  .has-dd>a::after{content:"+";font-size:1.1em;opacity:.7;transition:transform .2s}
+  .has-dd.sub-open>a::after{content:"–"}
+  .has-dd .dd{position:static;transform:none;box-shadow:none;border:none;min-width:0;
+    max-height:0;overflow:hidden;opacity:1;visibility:visible;padding:0 0 0 1rem;
+    transition:max-height .28s ease}
+  .has-dd.sub-open .dd{max-height:70vh;padding:.3rem 0 .7rem 1rem}
+  .nav-cta{margin:1rem 0 .4rem;text-align:center}
   .mtiles,.ctiles,.cards,.strip-grid,.foot-grid{grid-template-columns:1fr}
   .postlist li{grid-template-columns:1fr;gap:4px}
   .row-date{text-align:left}
   .pn-wrap{grid-template-columns:1fr}
   .foot-bot{flex-direction:column;gap:6px}
 }
+
+/* anasayfa: yumuşak bölüm kaydırması (Wix şablonu hissi) — asla kilitlemez */
+:root.home{scroll-snap-type:y proximity;scroll-padding-top:70px}
+:root.home body.home .hero,
+:root.home body.home main>section{scroll-snap-align:start;scroll-snap-stop:normal}
+@media(prefers-reduced-motion:reduce){:root.home{scroll-snap-type:none}}
+@media(max-width:720px){:root.home{scroll-padding-top:60px}}

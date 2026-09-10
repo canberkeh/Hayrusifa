@@ -312,10 +312,10 @@ LATEST = sorted(items, key=lambda x: x["date"], reverse=True)
 # --------------------------------------------------------------------------- #
 #  Şablon parçaları                                                          #
 # --------------------------------------------------------------------------- #
-def head(title, desc, path, og_img=None):
+def head(title, desc, path, og_img=None, body_class=""):
     canon = BASE_URL + path
     return f"""<!doctype html>
-<html lang="tr">
+<html lang="tr"{f' class="{body_class}"' if body_class else ''}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -332,7 +332,7 @@ def head(title, desc, path, og_img=None):
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body{f' class="{body_class}"' if body_class else ''}>
 """
 
 def rel(path, depth):
@@ -454,7 +454,8 @@ def build_home():
     latest_cards = "".join(card(it) for it in LATEST[:6])
     h = head(f"{SITE_NAME} — {SITE_TAG} | İstanbul",
              "İstanbul Üsküdar ve Ümraniye'de hacamat, sülük tedavisi, ozon terapisi, akupunktur ve "
-             "daha fazlası. Hekim gözetiminde doğal ve tamamlayıcı tedavi yöntemleri.", "/")
+             "daha fazlası. Hekim gözetiminde doğal ve tamamlayıcı tedavi yöntemleri.", "/",
+             body_class="home")
     h += header("home")
     lotus = ('<svg class="hero-lotus" viewBox="0 0 100 100" fill="none" stroke="#e8f97f" stroke-width="1">'
              '<circle cx="50" cy="50" r="30"/><path d="M50 20c10 12 10 28 0 40-10-12-10-28 0-40z'
