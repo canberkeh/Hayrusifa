@@ -31,7 +31,7 @@ CONTACT = {
     "adres": "Bulgurlu Mahallesi, Ünlü Sokak No:5 Kat:2 Ofis:2, 34696 Üsküdar / İstanbul",
     "tel": "0216 316 00 64",
     "tel_raw": "+902163160064",
-    "wa": "+90 532 470 97 67",
+    "wa": "0532 470 97 67",
     "wa_raw": "905324709767",
     "mail": "hayrusifa@gmail.com",
     "saatler": [("Pazartesi", "09:00 – 18:30"), ("Salı", "09:00 – 18:30"),
