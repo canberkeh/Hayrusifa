@@ -4,9 +4,26 @@ Eski site `https://hayrusifa.com.tr/` (WordPress) tamamen tarandı, tüm içerik
 metin olarak toplandı ve yeni bir temiz kategori yapısına göre yeniden
 düzenlendi. Bu klasör, yeni sitenin (düz HTML/CSS) içerik kaynağıdır.
 
-> **Durum:** İçerik toplama + kategorilendirme tamamlandı. **Statik site
-> üretildi** → `site/` (618 HTML sayfa). Tasarım Wix "Pilates Studio (Refined)"
-> şablonundan esinlenen sakin wellness estetiği.
+> **Durum:** İçerik toplama + kategorilendirme + statik site tamam.
+> **Yayında:** https://canberkeh.github.io/Hayrusifa/ (GitHub Pages, `gh-pages` branch).
+> Repo: https://github.com/canberkeh/Hayrusifa (public).
+
+## Yayın / Deploy
+
+- **Kaynak:** `main` branch — proje kökü mutlak yollar (`/assets`, `/blog`) kullanır,
+  hedef `hayrusifa.com.tr` kökü içindir.
+- **GitHub Pages:** `gh-pages` branch — `crawl/scripts/deploy-ghpages.sh` çalıştırılır;
+  site'ı yeniden üretir, yolları `/Hayrusifa/` ile önekler (proje-sitesi alt yolu),
+  `gh-pages` branch'e force-push eder. Pages 1-2 dk'da güncellenir.
+  ```
+  bash crawl/scripts/deploy-ghpages.sh
+  ```
+- **Otomatik deploy (opsiyonel):** `.github/pages.yml.disabled` hazır bir GitHub
+  Actions workflow'u. Aktifleştirmek için: `gh auth refresh -s workflow` çalıştır,
+  sonra dosyayı `.github/workflows/pages.yml`e taşıyıp push et — her `main` push'ında
+  `site/` otomatik yayınlanır (bu durumda Pages kaynağını "GitHub Actions" yap).
+- **Gerçek alan adı (`hayrusifa.com.tr`):** `site/` klasörünün içeriği doğrudan
+  domain köküne konur; yol öneki gerekmez.
 
 ## Üretilen Site (`site/`)
 
