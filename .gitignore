@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Buyuk / yeniden uretilebilir ham veriler
+# (site/assets/img/ icindeki kullanilan gorseller yeterli;
+#  media/images tamami dl_images.py + manifest ile yeniden indirilir,
+#  crawl/raw-html fetch_pages_html.py ile yeniden cekilir)
+media/images/
+crawl/raw-html/
+media/dl-log*.txt
+crawl/scripts/test.html
+
+# Loglar
+*.log
+
+# workflow scope alininca .github/workflows/pages.yml olarak geri konacak
+.github/pages.yml.disabled

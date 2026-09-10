@@ -1,0 +1,41 @@
+[
+ {
+  "id": 1,
+  "name": "Hayru Şifa",
+  "url": "",
+  "description": "",
+  "link": "https://hayrusifa.com.tr/author/hayrusifa/",
+  "slug": "hayrusifa",
+  "avatar_urls": {
+   "24": "https://secure.gravatar.com/avatar/796e6e19e3274ba48bcb985203cc4b5dcda0fc72890a34cc6a1733a649793cb7?s=24&r=g",
+   "48": "https://secure.gravatar.com/avatar/796e6e19e3274ba48bcb985203cc4b5dcda0fc72890a34cc6a1733a649793cb7?s=48&r=g",
+   "96": "https://secure.gravatar.com/avatar/796e6e19e3274ba48bcb985203cc4b5dcda0fc72890a34cc6a1733a649793cb7?s=96&r=g"
+  },
+  "meta": [],
+  "yoast_head": null,
+  "yoast_head_json": null,
+  "elementor_introduction": {
+   "ai-get-started-announcement": true,
+   "globals_introduction": true,
+   "yoast-introduction": true,
+   "yoast-introduction-editor-v2": true
+  },
+  "_links": {
+   "self": [
+    {
+     "href": "https://hayrusifa.com.tr/wp-json/wp/v2/users/1",
+     "targetHints": {
+      "allow": [
+       "GET"
+      ]
+     }
+    }
+   ],
+   "collection": [
+    {
+     "href": "https://hayrusifa.com.tr/wp-json/wp/v2/users"
+    }
+   ]
+  }
+ }
+]
