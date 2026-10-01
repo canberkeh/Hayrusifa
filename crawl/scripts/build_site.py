@@ -65,7 +65,8 @@ METHODS = OrderedDict([
         short="Ozon–oksijen karışımıyla doku oksijenlenmesi ve bağışıklık desteği.",
         intro="Ozon terapisi, kontrollü dozda ozon–oksijen karışımının çeşitli yöntemlerle "
               "uygulanmasıyla hücresel oksijen kullanımını ve antioksidan savunmayı desteklemeyi "
-              "amaçlayan tamamlayıcı bir uygulamadır.")),
+              "amaçlayan tamamlayıcı bir uygulamadır. Kliniğimizde rektal ozon ve torba ozon "
+              "(ekstremite torbalama) uygulama yöntemleriyle de hizmet vermekteyiz.")),
     ("mezoterapi", dict(
         label="Mezoterapi", menu="Mezoterapi",
         short="Cilde ve saçlı deriye mikroenjeksiyonlarla bölgesel bakım ve canlandırma.",
@@ -90,9 +91,9 @@ METHODS = OrderedDict([
               "değerlendirerek kronik şikâyetlerin altında yatan nedenleri anlamaya çalışan "
               "bütüncül bir yaklaşımdır.")),
     ("noral-terapi", dict(
-        label="Nöral Terapi", menu="Nöral Terapi",
+        label="Nöralterapi", menu="Nöralterapi",
         short="Lokal anesteziklerle sinir sistemi regülasyonuna dayalı ağrı yaklaşımı.",
-        intro="Nöral terapi, düşük doz lokal anesteziklerin belirli noktalara uygulanmasıyla "
+        intro="Nöralterapi, düşük doz lokal anesteziklerin belirli noktalara uygulanmasıyla "
               "vejetatif sinir sistemindeki dengesizlikleri hedefleyen tamamlayıcı bir yöntemdir.")),
     ("glutatyon", dict(
         label="Glutatyon Tedavisi", menu="Glutatyon",
@@ -110,10 +111,13 @@ METHODS = OrderedDict([
         intro="Mizaç analizi; geleneksel tıp anlayışında kişinin baskın mizacını belirleyerek "
               "beslenme ve yaşam önerilerini kişiselleştirmeyi amaçlar.")),
     ("manuel-terapi", dict(
-        label="Manuel Terapi", menu="Manuel Terapi",
-        short="Omurga ve eklem kaynaklı ağrılarda elle uygulama teknikleri.",
+        label="Manuel Terapi & Osteopati", menu="Manuel Terapi",
+        short="Omurga ve eklem kaynaklı ağrılarda elle uygulama teknikleri ve osteopati.",
         intro="Manuel terapi; eklem ve yumuşak dokulara yönelik elle uygulanan mobilizasyon ve "
-              "gevşetme teknikleriyle hareket açıklığını ve ağrıyı iyileştirmeyi hedefler.")),
+              "gevşetme teknikleriyle hareket açıklığını ve ağrıyı iyileştirmeyi hedefler. "
+              "Kliniğimizde bu başlık altında osteopati uygulamalarının yanı sıra göbek düşmesi "
+              "ve pöçük düşmesi gibi geleneksel rahatsızlıklara yönelik elle manipülasyon "
+              "tekniklerine de yer veriyoruz.")),
     ("aromaterapi", dict(
         label="Aromaterapi", menu="Aromaterapi",
         short="Esansiyel yağlarla ruhsal ve bedensel denge desteği.",
@@ -715,13 +719,21 @@ def simple_page(slug, title, active, intro, body_html, note=None):
     write(f"{slug}.html", h)
 
 def build_institutional():
-    kli = _page_md("klinigimiz")
-    body = _md_min(kli) if kli else ""
+    hakkimizda_body = """
+<p>Hayru Şifa olarak, 10 yılı aşkın tecrübemiz ve 400.000'den fazla danışan deneyimimizle
+sağlık ve tamamlayıcı tıp alanında hizmet vermekteyiz. Amacımız, her danışanımıza güvenilir,
+etik ve profesyonel bir sağlık deneyimi sunarken bireysel ihtiyaçlarına uygun çözümler sunmaktır.</p>
+<p>Uzman ekibimiz tarafından yürütülen uygulamalarımızda hasta güvenliği, hijyen standartları,
+mahremiyet ve bilimsel yaklaşım temel önceliklerimizdir.</p>
+<p>Kliniğimizde modern sağlık anlayışı ile geleneksel ve tamamlayıcı tedavi yöntemlerini bir araya
+getirerek danışanlarımızın yaşam kalitesini artırmayı hedefliyoruz.</p>
+<p>Hayru Şifa ailesi olarak, sağlığın yalnızca hastalıkların tedavisi değil, aynı zamanda yaşam
+kalitesinin korunması ve geliştirilmesi olduğuna inanıyor; deneyimli kadromuzla sizleri güvenli,
+konforlu ve profesyonel bir ortamda ağırlamaktan memnuniyet duyuyoruz.</p>
+"""
     simple_page("hakkimizda", "Hakkımızda", "hakkimizda",
-                "Hayru Şifa; geleneksel ve tamamlayıcı tıp uygulamalarını hekim gözetiminde, "
-                "hijyenik bir ortamda sunan bir kliniktir.",
-                body or "<p>İçerik hazırlanıyor.</p>",
-                None if kli else "Bu sayfanın içeriği eski siteden aktarılamadı; klinik tarafından güncellenecek.")
+                "10 yılı aşkın tecrübe, 400.000'den fazla danışan deneyimi.",
+                hakkimizda_body)
 
     yorum_note = "Hasta yorumları eski siteden aktarılamadı. Gerçek hasta geri bildirimleri buraya eklenecek."
     simple_page("hasta-yorumlari", "Hasta Yorumları", "",
