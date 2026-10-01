@@ -3,11 +3,10 @@
   --bg:#f7f5ef; --surface:#ffffff; --surface-2:#efede5;
   --ink:#1f2733; --muted:#5f6b74; --hair:#e3e0d4;
   --navy:#1e2a38; --navy-2:#26313f;
-  --lime:#e8f97f; --lime-d:#dbe96a; --lime-soft:#f0f3d9;
   --sage:#cfdcd0; --sage-bg:#e7eee4; --sand:#e9e1d2;
   /* accent tokens repointed to navy so existing rules stay valid */
   --accent:#1e2a38; --accent-d:#1e2a38; --accent-soft:#eef0dc;
-  /* üst bar — talep edilen lacivert (yalnızca header/mobil menü arka planı) */
+  /* üst bar + eski sarı/lime'ın yerini alan lacivert marka rengi */
   --topbar:#0433bf; --topbar-line:rgba(255,255,255,.18); --topbar-muted:rgba(255,255,255,.72);
   --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
   --display:"Space Grotesk","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -28,7 +27,7 @@ h3{font-size:1.3rem;letter-spacing:-.01em}
 p{margin:0 0 1rem}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
 .narrow{max-width:760px}
-.center{text-align:center}
+.center{text-align:center;margin-top:2.4rem}
 .muted{color:var(--muted)}
 .sm{font-size:.9rem}
 .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;
@@ -47,8 +46,8 @@ p{margin:0 0 1rem}
 .btn:hover{background:#000;border-color:#000;text-decoration:none}
 .btn-ghost{background:transparent;color:var(--navy)}
 .btn-ghost:hover{background:var(--navy);color:#fff}
-.btn-light{background:var(--lime);color:var(--navy);border-color:var(--lime)}
-.btn-light:hover{background:#fff;border-color:#fff}
+.btn-light{background:var(--topbar);color:#fff;border-color:var(--topbar)}
+.btn-light:hover{background:#fff;color:var(--topbar);border-color:#fff}
 .btn-sm{padding:.62rem 1.2rem;font-size:.84rem}
 
 /* header — lacivert bar, ortada menü, sağda beyaz buton */
@@ -126,7 +125,7 @@ p{margin:0 0 1rem}
 /* strip */
 .strip{background:var(--navy);color:#fff}
 .strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:2.6rem 24px;text-align:center}
-.strip-n{display:block;font-family:var(--display);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;color:var(--lime)}
+.strip-n{display:block;font-family:var(--display);font-size:1.8rem;font-weight:700;letter-spacing:-.02em;color:#fff}
 .strip-l{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;opacity:.82;margin-top:.2rem}
 
 /* cards */
@@ -266,8 +265,13 @@ p{margin:0 0 1rem}
 .site-foot{background:var(--navy);color:#c7cdd4;margin-top:0;padding-top:3.5rem}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.3fr;gap:36px;padding-bottom:2.5rem}
 .foot-brand{color:#fff;font-size:1.45rem;margin-bottom:.7rem}
+.foot-social{display:flex;gap:10px;margin-top:1.1rem}
+.foot-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.3);color:#c7cdd4;transition:.16s}
+.foot-social a:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.08)}
+.foot-social svg{width:18px;height:18px}
 .site-foot h4{font-family:var(--sans);font-size:.76rem;text-transform:uppercase;letter-spacing:.16em;
-  color:var(--lime);margin:0 0 1rem}
+  color:#fff;margin:0 0 1rem}
 .site-foot .muted{color:#9aa2ac}
 .foot-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.55rem}
 .foot-links a{color:#c7cdd4;font-size:.9rem}

@@ -31,17 +31,21 @@ CONTACT = {
     "adres": "Bulgurlu Mahallesi, Ünlü Sokak No:5 Kat:2 Ofis:2, 34696 Üsküdar / İstanbul",
     "tel": "0216 316 00 64",
     "tel_raw": "+902163160064",
+    "tel2": "0532 470 97 67",
+    "tel2_raw": "+905324709767",
     "wa": "0532 470 97 67",
     "wa_raw": "905324709767",
     "mail": "hayrusifa@gmail.com",
-    "saatler": [("Pazartesi", "09:00 – 18:30"), ("Salı", "09:00 – 18:30"),
-                ("Çarşamba", "09:00 – 18:30"), ("Perşembe", "09:00 – 18:30"),
-                ("Cuma", "Kapalı"), ("Cumartesi", "Kapalı"), ("Pazar", "09:00 – 18:30")],
-    "saat": "Pazartesi–Perşembe ve Pazar: 09:00 – 18:30 · Cuma, Cumartesi: Kapalı",
+    "saatler": [("Pazartesi", "09:30 – 18:30"), ("Salı", "09:30 – 18:30"),
+                ("Çarşamba", "09:30 – 18:30"), ("Perşembe", "09:30 – 18:30"),
+                ("Cuma", "Kapalı"), ("Cumartesi", "Kapalı"), ("Pazar", "09:30 – 18:30")],
+    "saat": "Pazartesi–Perşembe ve Pazar: 09:30 – 18:30 · Cuma, Cumartesi: Kapalı",
     "maps": "https://maps.app.goo.gl/eBBBSeUwsq3PuK1CA",
     "maps_embed": ("https://www.openstreetmap.org/export/embed.html?"
                    "bbox=29.0655%2C41.0101%2C29.0855%2C41.0221&layer=mapnik&"
                    "marker=41.016104%2C29.0754943"),
+    "instagram": "https://www.instagram.com/hayru_sifa",
+    "facebook": "https://www.facebook.com/alternatifveholisliksaglik",
 }
 
 # --------------------------------------------------------------------------- #
@@ -376,6 +380,14 @@ def footer():
       <div class="brand foot-brand">Hayru Şifa</div>
       <p class="muted">{e(SITE_TAG)}. Uygulamalarımız hekim gözetiminde, steril ve tek kullanımlık malzemelerle yapılır.</p>
       <p class="muted sm">Bu sitedeki içerikler bilgilendirme amaçlıdır; tıbbi tanı ve tedavinin yerine geçmez.</p>
+      <div class="foot-social">
+        <a href="{e(CONTACT['instagram'])}" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
+        </a>
+        <a href="{e(CONTACT['facebook'])}" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.5 8.5h2.3V5.3h-2.6c-2.4 0-4 1.6-4 4.1v1.9H8v3.2h2.2V21h3.3v-6.5h2.4l.4-3.2h-2.8V9.6c0-.8.4-1.1 1-1.1z"/></svg>
+        </a>
+      </div>
     </div>
     <div>
       <h4>Tedavi Yöntemleri</h4>
@@ -385,9 +397,7 @@ def footer():
       <h4>Kurumsal</h4>
       <ul class="foot-links">
         <li><a href="/hakkimizda.html">Hakkımızda</a></li>
-        <li><a href="/ekibimiz.html">Ekibimiz</a></li>
         <li><a href="/hasta-yorumlari.html">Hasta Yorumları</a></li>
-        <li><a href="/hicri-hacamat-gunleri.html">Hicri Hacamat Günleri</a></li>
         <li><a href="/blog/">Blog</a></li>
       </ul>
     </div>
@@ -396,9 +406,10 @@ def footer():
       <ul class="foot-links plain">
         <li>{"<br>".join(e(x) for x in CONTACT['adres_satirlar'])}</li>
         <li><a href="tel:{e(CONTACT['tel_raw'])}">{e(CONTACT['tel'])}</a> ·
-            <a href="https://wa.me/{e(CONTACT['wa_raw'])}">WhatsApp</a></li>
+            <a href="tel:{e(CONTACT['tel2_raw'])}">{e(CONTACT['tel2'])}</a></li>
+        <li><a href="https://wa.me/{e(CONTACT['wa_raw'])}">WhatsApp: {e(CONTACT['wa'])}</a></li>
         <li><a href="mailto:{e(CONTACT['mail'])}">{e(CONTACT['mail'])}</a></li>
-        <li>Pazartesi – Perşembe, Pazar: 09:00 – 18:30<br>Cuma, Cumartesi: Kapalı</li>
+        <li>Pazartesi – Perşembe, Pazar: 09:30 – 18:30<br>Cuma, Cumartesi: Kapalı</li>
         <li><a href="{e(CONTACT['maps'])}">Haritada aç →</a></li>
       </ul>
     </div>
@@ -461,7 +472,7 @@ def build_home():
              "daha fazlası. Hekim gözetiminde doğal ve tamamlayıcı tedavi yöntemleri.", "/",
              body_class="home")
     h += header("home")
-    lotus = ('<svg class="hero-lotus" viewBox="0 0 100 100" fill="none" stroke="#e8f97f" stroke-width="1">'
+    lotus = ('<svg class="hero-lotus" viewBox="0 0 100 100" fill="none" stroke="#ffffff" stroke-width="1">'
              '<circle cx="50" cy="50" r="30"/><path d="M50 20c10 12 10 28 0 40-10-12-10-28 0-40z'
              'M50 80c-10-12-10-28 0-40 10 12 10 28 0 40zM20 50c12-10 28-10 40 0-12 10-28 10-40 0z'
              'M80 50c-12 10-28 10-40 0 12-10 28-10 40 0z"/></svg>')
@@ -740,12 +751,6 @@ konforlu ve profesyonel bir ortamda ağırlamaktan memnuniyet duyuyoruz.</p>
                 "Kliniğimizde uygulama yaptıran danışanlarımızın deneyimleri.",
                 '<p class="muted">Yorumlar yakında yayımlanacak.</p>', yorum_note)
 
-    simple_page("ekibimiz", "Ekibimiz", "",
-                "Uygulamalarımız hekim ve sertifikalı terapist eşliğinde yürütülür.",
-                "<ul><li>Sorumlu Hekim — [ad, unvan eklenecek]</li>"
-                "<li>Terapist kadrosu — [eklenecek]</li></ul>",
-                "Ekip bilgileri eski sitede bulunmuyordu; klinik tarafından doldurulacak.")
-
     # iletişim
     h = head("İletişim & Randevu | Hayru Şifa",
              "Hayru Şifa kliniği — Bulgurlu Mah. Ünlü Sokak No:5, Üsküdar / İstanbul. "
@@ -766,7 +771,8 @@ WhatsApp'tan bize ulaşabilirsiniz.</p></section>
       </div>
       <div class="ci-row">
         <h4>Telefon</h4>
-        <p><a href="tel:{e(CONTACT['tel_raw'])}">{e(CONTACT['tel'])}</a></p>
+        <p><a href="tel:{e(CONTACT['tel_raw'])}">{e(CONTACT['tel'])}</a> ·
+           <a href="tel:{e(CONTACT['tel2_raw'])}">{e(CONTACT['tel2'])}</a></p>
       </div>
       <div class="ci-row">
         <h4>WhatsApp</h4>
@@ -781,6 +787,11 @@ WhatsApp'tan bize ulaşabilirsiniz.</p></section>
         <ul class="hours">
           {"".join(f'<li class="{"off" if v=="Kapalı" else ""}"><span>{e(g)}</span><span>{e(v)}</span></li>' for g, v in CONTACT['saatler'])}
         </ul>
+      </div>
+      <div class="ci-row">
+        <h4>Sosyal Medya</h4>
+        <p><a href="{e(CONTACT['instagram'])}" target="_blank" rel="noopener">Instagram</a> ·
+           <a href="{e(CONTACT['facebook'])}" target="_blank" rel="noopener">Facebook</a></p>
       </div>
     </div>
     <div class="contact-cta">
@@ -797,25 +808,6 @@ WhatsApp'tan bize ulaşabilirsiniz.</p></section>
 </main>"""
     h += footer()
     write("iletisim.html", h)
-
-def build_hicri():
-    posts = BY_CAT.get("hicri-hacamat-gunleri", [])
-    lis = "".join(f'<li><a href="{it["url"]}">{e(it["title"])}</a><span>{e(it["date_h"])}</span></li>'
-                  for it in posts)
-    h = head("Hicri Hacamat Günleri | Hayru Şifa",
-             "Geleneksel kaynaklarda hacamat için önerilen günler ve güncel takvim.",
-             "/hicri-hacamat-gunleri.html")
-    h += header("")
-    h += breadcrumb([("Anasayfa", "/"), ("Hicri Hacamat Günleri", None)])
-    h += f"""<main id="main">
-<section class="wrap page-head"><p class="eyebrow">Takvim</p><h1>Hicri Hacamat Günleri</h1>
-<p class="lead">Geleneksel kaynaklarda hacamat için ayın 17, 19 ve 21. günleri ve özellikle
-Pazartesi, Salı ve Perşembe günleri önerilir. Güncel takvim ve arşiv yazıları aşağıdadır.</p>
-<p class="note">Takvim tablosu klinik tarafından her yıl güncellenecek.</p></section>
-<section class="wrap narrow"><ul class="linklist">{lis or '<li class=muted>Arşiv yazısı yok.</li>'}</ul></section>
-</main>"""
-    h += footer()
-    write("hicri-hacamat-gunleri.html", h)
 
 def build_404():
     h = head("Sayfa bulunamadı | Hayru Şifa", "Aradığınız sayfa taşınmış olabilir.", "/404.html")
@@ -847,7 +839,7 @@ def build_assets():
 
 def build_meta():
     urls = ["/", "/blog/", "/blog/tum-yazilar.html", "/hakkimizda.html", "/iletisim.html",
-            "/ekibimiz.html", "/hasta-yorumlari.html", "/hicri-hacamat-gunleri.html"]
+            "/hasta-yorumlari.html"]
     urls += [f"/blog/{s}/" for s in ALL_CATS if BY_CAT.get(s)]
     urls += [it["url"] for it in items]
     body = "".join(f"<url><loc>{BASE_URL}{u}</loc></url>\n" for u in urls)
@@ -871,7 +863,6 @@ if __name__ == "__main__":
     for it in items:
         build_post(it)
     build_institutional()
-    build_hicri()
     build_404()
     build_assets()
     build_meta()
