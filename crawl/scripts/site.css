@@ -196,6 +196,12 @@ p{margin:0 0 1rem}
 .prose strong{color:var(--ink)}
 .prose blockquote{border-left:3px solid var(--accent);margin:1.5rem 0;padding:.4rem 0 .4rem 1.2rem;
   color:#4b453d;font-style:italic}
+
+/* gömülü videolar (Hakkımızda, İletişim) */
+.video-embed{margin:2.2rem 0;padding:0}
+.video-embed video{width:100%;display:block;border-radius:var(--r);border:1px solid var(--hair);
+  background:#000;aspect-ratio:16/9;box-shadow:var(--shadow)}
+.video-embed figcaption{margin-top:.6rem;font-size:.85rem;color:var(--muted);text-align:center}
 .chips{margin:2rem 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.85rem;color:var(--muted)}
 .chip{background:var(--surface);border:1px solid var(--hair);border-radius:999px;padding:.3rem .8rem;
   font-size:.8rem;color:var(--ink)}

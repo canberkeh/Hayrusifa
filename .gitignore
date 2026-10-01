@@ -10,6 +10,7 @@ __pycache__/
 #  media/images tamami dl_images.py + manifest ile yeniden indirilir,
 #  crawl/raw-html fetch_pages_html.py ile yeniden cekilir)
 media/images/
+media/videos/
 crawl/raw-html/
 media/dl-log*.txt
 crawl/scripts/test.html

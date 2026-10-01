@@ -714,6 +714,14 @@ def _md_min(md):
     import markdown as _m
     return _m.markdown(md, extensions=["extra", "sane_lists"])
 
+def video_embed(src, title, poster=None):
+    pst = f' poster="{e(poster)}"' if poster else ""
+    return (f'<figure class="video-embed"><video controls preload="metadata"{pst}>'
+            f'<source src="{e(src)}" type="video/mp4">'
+            f'Tarayıcınız video oynatmayı desteklemiyor. '
+            f'<a href="{e(src)}">Videoyu indirin</a>.</video>'
+            f'<figcaption>{e(title)}</figcaption></figure>')
+
 def simple_page(slug, title, active, intro, body_html, note=None):
     h = head(f"{title} | Hayru Şifa", intro[:180], f"/{slug}.html")
     h += header(active)
@@ -741,7 +749,8 @@ getirerek danışanlarımızın yaşam kalitesini artırmayı hedefliyoruz.</p>
 <p>Hayru Şifa ailesi olarak, sağlığın yalnızca hastalıkların tedavisi değil, aynı zamanda yaşam
 kalitesinin korunması ve geliştirilmesi olduğuna inanıyor; deneyimli kadromuzla sizleri güvenli,
 konforlu ve profesyonel bir ortamda ağırlamaktan memnuniyet duyuyoruz.</p>
-"""
+""" + video_embed("/assets/video/tanitim.mp4", "Hayru Şifa Tanıtım Videosu") \
+    + video_embed("/assets/video/konum.mp4", "Kliniğimizin Konumu")
     simple_page("hakkimizda", "Hakkımızda", "hakkimizda",
                 "10 yılı aşkın tecrübe, 400.000'den fazla danışan deneyimi.",
                 hakkimizda_body)
@@ -805,6 +814,9 @@ WhatsApp'tan bize ulaşabilirsiniz.</p></section>
     <a class="map-link" href="{e(CONTACT['maps'])}">Google Haritalar'da aç →</a>
   </div>
 </section>
+<section class="wrap narrow" style="padding-bottom:4rem">
+  {video_embed("/assets/video/konum.mp4", "Kliniğimize Nasıl Ulaşılır?")}
+</section>
 </main>"""
     h += footer()
     write("iletisim.html", h)
@@ -836,6 +848,16 @@ def build_assets():
         if os.path.exists(s):
             shutil.copy2(s, os.path.join(dst, fn)); n += 1
     print(f"  görsel kopyalandı: {n}")
+    vdst = f"{SITE}/assets/video"
+    vsrc = f"{ROOT}/media/videos"
+    if os.path.isdir(vsrc):
+        os.makedirs(vdst, exist_ok=True)
+        vn = 0
+        for fn in os.listdir(vsrc):
+            if fn.startswith("."):
+                continue
+            shutil.copy2(os.path.join(vsrc, fn), os.path.join(vdst, fn)); vn += 1
+        print(f"  video kopyalandı: {vn}")
 
 def build_meta():
     urls = ["/", "/blog/", "/blog/tum-yazilar.html", "/hakkimizda.html", "/iletisim.html",
