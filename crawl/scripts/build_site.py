@@ -722,13 +722,13 @@ def video_embed(src, title, poster=None):
             f'<a href="{e(src)}">Videoyu indirin</a>.</video>'
             f'<figcaption>{e(title)}</figcaption></figure>')
 
-def simple_page(slug, title, active, intro, body_html, note=None):
-    h = head(f"{title} | Hayru Şifa", intro[:180], f"/{slug}.html")
+def simple_page(slug, title, active, intro, body_html, note=None, eyebrow="Kurumsal", meta_desc=None):
+    h = head(f"{title} | Hayru Şifa", (meta_desc or intro)[:180], f"/{slug}.html")
     h += header(active)
     h += breadcrumb([("Anasayfa", "/"), (title, None)])
     h += f"""<main id="main">
-<section class="wrap page-head"><p class="eyebrow">Kurumsal</p><h1>{e(title)}</h1>
-<p class="lead">{e(intro)}</p></section>
+<section class="wrap page-head">{f'<p class="eyebrow">{e(eyebrow)}</p>' if eyebrow else ''}<h1>{e(title)}</h1>
+{f'<p class="lead">{e(intro)}</p>' if intro else ''}</section>
 <section class="wrap narrow prose">
 {f'<p class="note">{e(note)}</p>' if note else ''}
 {body_html}
@@ -752,8 +752,9 @@ konforlu ve profesyonel bir ortamda ağırlamaktan memnuniyet duyuyoruz.</p>
 """ + video_embed("/assets/video/tanitim.mp4", "Hayru Şifa Tanıtım Videosu") \
     + video_embed("/assets/video/konum.mp4", "Kliniğimizin Konumu")
     simple_page("hakkimizda", "Hakkımızda", "hakkimizda",
-                "10 yılı aşkın tecrübe, 400.000'den fazla danışan deneyimi.",
-                hakkimizda_body)
+                "", hakkimizda_body, eyebrow="",
+                meta_desc="10 yılı aşkın tecrübe, 400.000'den fazla danışan deneyimi ile "
+                          "sağlık ve tamamlayıcı tıp alanında hizmet veriyoruz.")
 
     yorum_note = "Hasta yorumları eski siteden aktarılamadı. Gerçek hasta geri bildirimleri buraya eklenecek."
     simple_page("hasta-yorumlari", "Hasta Yorumları", "",
