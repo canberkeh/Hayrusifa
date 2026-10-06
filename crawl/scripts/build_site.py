@@ -396,7 +396,6 @@ def footer():
       <h4>Kurumsal</h4>
       <ul class="foot-links">
         <li><a href="/hakkimizda.html">Hakkımızda</a></li>
-        <li><a href="/hasta-yorumlari.html">Hasta Yorumları</a></li>
         <li><a href="/blog/">Blog</a></li>
       </ul>
     </div>
@@ -546,10 +545,7 @@ def build_blog_index():
     h += breadcrumb([("Anasayfa", "/"), ("Blog", None)])
     h += f"""<main id="main">
 <section class="wrap page-head">
-  <p class="eyebrow">Bilgi Merkezi</p>
   <h1>Blog</h1>
-  <p class="lead">Tüm yazılar artık tek çatı altında ve <strong>tedavi yöntemine göre</strong> kategorilenmiş.
-     Bir kategori seçin ya da <a href="/blog/tum-yazilar.html">tüm yazılarda arayın</a>.</p>
 </section>
 
 <section class="wrap band">
@@ -803,11 +799,6 @@ konforlu ve profesyonel bir ortamda ağırlamaktan memnuniyet duyuyoruz.</p>
                           "sağlık ve tamamlayıcı tıp alanında hizmet veriyoruz.",
                 extra_html=testimonials_section(), narrow=False)
 
-    yorum_note = "Hasta yorumları eski siteden aktarılamadı. Gerçek hasta geri bildirimleri buraya eklenecek."
-    simple_page("hasta-yorumlari", "Hasta Yorumları", "",
-                "Kliniğimizde uygulama yaptıran danışanlarımızın deneyimleri.",
-                '<p class="muted">Yorumlar yakında yayımlanacak.</p>', yorum_note)
-
     # iletişim
     h = head("İletişim & Randevu | Hayru Şifa",
              "Hayru Şifa kliniği — Bulgurlu Mah. Ünlü Sokak No:5, Üsküdar / İstanbul. "
@@ -908,8 +899,7 @@ def build_assets():
         print(f"  video kopyalandı: {vn}")
 
 def build_meta():
-    urls = ["/", "/blog/", "/blog/tum-yazilar.html", "/hakkimizda.html", "/iletisim.html",
-            "/hasta-yorumlari.html"]
+    urls = ["/", "/blog/", "/blog/tum-yazilar.html", "/hakkimizda.html", "/iletisim.html"]
     urls += [f"/blog/{s}/" for s in ALL_CATS if BY_CAT.get(s)]
     urls += [it["url"] for it in items]
     body = "".join(f"<url><loc>{BASE_URL}{u}</loc></url>\n" for u in urls)

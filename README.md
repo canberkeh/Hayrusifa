@@ -7,6 +7,13 @@ düzenlendi. Bu klasör, yeni sitenin (düz HTML/CSS) içerik kaynağıdır.
 > **Durum:** İçerik toplama + kategorilendirme + statik site tamam.
 > **Yayında:** https://canberkeh.github.io/Hayrusifa/ (GitHub Pages, `gh-pages` branch).
 > Repo: https://github.com/canberkeh/Hayrusifa (public).
+>
+> **2026-10 güncellemeleri:** `/blog/tum-yazilar.html` arama/kategori filtresi
+> düzeltildi (CSS, `[hidden]` özniteliğini eziyordu — bkz. `crawl/scripts/site.css`
+> `.postlist li[hidden]`); `/blog/` sayfasındaki "Bilgi Merkezi" ön-metni
+> kaldırıldı; yönlendirmesi olmayan `hasta-yorumlari.html` silindi (gerçek
+> yorumlar zaten `hakkimizda.html`'de); `2026-hacamat-gunleri` ve
+> `2027-hacamat-gunleri` yazıları eklendi.
 
 ## Yayın / Deploy
 
@@ -35,10 +42,15 @@ Düz HTML/CSS/JS. Framework yok. `crawl/scripts/build_site.py` ile üretilir.
 | Blog ana sayfası (kategori vitrini) | 1 | `site/blog/index.html` |
 | Tüm yazılar (aranabilir/süzülebilir liste) | 1 | `site/blog/tum-yazilar.html` |
 | Kategori sayfaları (yönteme göre, alt konu gruplu) | 21 | `site/blog/<yöntem>/index.html` |
-| Blog yazısı | 588 | `site/blog/<yöntem>/<slug>.html` |
-| Kurumsal (hakkımızda, ekibimiz, hasta-yorumları, iletişim) | 4 | `site/*.html` |
-| Hicri Hacamat Günleri, 404 | 2 | `site/*.html` |
+| Blog yazısı | 590 | `site/blog/<yöntem>/<slug>.html` |
+| Kurumsal (hakkımızda, iletişim) | 2 | `site/*.html` |
+| 404 | 1 | `site/404.html` |
 | + `sitemap.xml`, `robots.txt`, `_redirects` (eski slug → yeni URL 301) | | |
+
+> `hasta-yorumlari.html` kaldırıldı (2026-10): hiçbir yerden yönlendirmesi olmayan,
+> içeriği "yakında" notuyla boş duran bir sayfaydı; gerçek Google yorumları zaten
+> `hakkimizda.html`'deki "Danışan Yorumları" bölümünde yayında. İki ayrı/çelişen
+> yorum sayfası olmasın diye tek sayfada birleştirildi.
 
 **Önizleme:** `cd site && python3 -m http.server 8000` → `http://localhost:8000`
 (mutlak yollar kullanıldığı için `file://` ile açılmaz, sunucu gerekir).
@@ -46,8 +58,8 @@ Düz HTML/CSS/JS. Framework yok. `crawl/scripts/build_site.py` ile üretilir.
 **Tasarım:** `crawl/scripts/site.css` (tek stylesheet) · `crawl/scripts/site.js`
 (mobil menü + yazı süzme). Wix **"Pilates Studio (Refined)" (wh-1323)** şablonu
 referans alındı (şablonun kendi header'ı — Wix editör sarmalayıcısı değil):
-- **Header:** açık fıstık yeşili (lime `#e8f97f`) bar, ortada/sağda menü, sağda
-  koyu lacivert "Randevu" butonu
+- **Header:** koyu lacivert (`#0433bf`) bar, ortada/sağda menü — ilk tasarımdaki
+  açık fıstık yeşili (lime) header, marka rengi olarak lacivert'e çevrildi
 - **Hero:** bölünmüş — koyu lacivert (`#1e2a38`) metin paneli + görsel, ince
   lime lotus motifi
 - **Tipografi:** Space Grotesk (başlık, sıkı/kalın) + Inter (gövde), logo
@@ -71,10 +83,20 @@ Harita: https://maps.app.goo.gl/eBBBSeUwsq3PuK1CA
 + "Haritalar'da aç" linki var. (Harita embed karoları localhost'ta boş görünür,
 yayına alınınca render olur; goo.gl linki her yerde çalışır.)
 
-**Bilinen eksikler:** boş kurumsal sayfalar (doktorumuz/ekibimiz/hasta-yorumları)
-"içerik hazırlanıyor" notlu; ~12 eski yazıda öne çıkan görsel yok (kategori
-etiketli placeholder); yazı içi eski dahili linkler henüz yeni URL'lere
-map'lenmedi.
+**Hicri Hacamat Günleri:** Her yıl Hicri ayın 17./19./21. günlerini (dolunay
+sonrası, geleneksel hacamat günleri) miladi takvime çeviren bir takvim yazısı
+yayınlanıyor — `2026-hacamat-gunleri` ve `2027-hacamat-gunleri` (2026-10'da
+eklendi, `2024-hacamat-gunleri`nin yerini en-güncel olarak aldı; kategori
+sayfasında ve anasayfa/blog "son eklenen yazılar"da en üstte listeleniyor çünkü
+yayın tarihleri en yeni). Hicri ay başlangıçları Diyanet'in hesaplamalı
+takvimine göre alındı ve Ramazan/Kurban Bayramı ile Hicri Yılbaşı resmî
+tarihleriyle çapraz doğrulandı. Her yıl yeni bir yıl için aynı yöntemle bir
+sonraki yazı eklenmeli (örn. 2026 sonunda 2028 için).
+
+**Bilinen eksikler:** boş kurumsal sayfalar (doktorumuz/ekibimiz) henüz yok —
+ekip/doktor bilgisi geldiğinde `hakkimizda.html`'e eklenecek; ~12 eski yazıda
+öne çıkan görsel yok (kategori etiketli placeholder); yazı içi eski dahili
+linkler henüz yeni URL'lere map'lenmedi.
 
 ---
 
@@ -82,7 +104,7 @@ map'lenmedi.
 
 | Öğe | Adet |
 |---|---|
-| Blog yazısı (toplandı) | **588** |
+| Blog yazısı (toplandı + 2 yeni hacamat takvimi) | **590** |
 | Kurumsal / hizmet sayfası | **24** |
 | Eski WordPress kategorisi | 129 (118'i dolu) |
 | Eski WordPress etiketi | 2.630 |
@@ -104,8 +126,8 @@ hayrusifa/
 ├── site-yapisi.md             ← YENİ sitenin sayfa haritası / IA önerisi
 │
 ├── content/
-│   ├── blog/                  ← 588 yazı, YENİ kategori ağacına göre klasörlenmiş
-│   │   ├── _ham/              ← tüm yazıların düz (kategorisiz) yedeği — 588 .md
+│   ├── blog/                  ← 590 yazı, YENİ kategori ağacına göre klasörlenmiş
+│   │   ├── _ham/              ← tüm yazıların düz (kategorisiz) yedeği — 590 .md
 │   │   ├── hacamat/
 │   │   │   ├── faydalari/
 │   │   │   ├── nedir-genel/

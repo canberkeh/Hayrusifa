@@ -249,6 +249,7 @@ p{margin:0 0 1rem}
   font:inherit;padding:.7rem .95rem;border:1px solid var(--hair);border-radius:8px;background:#fff;color:var(--ink)}
 .filterbar input{flex:1;min-width:220px}
 .postlist{list-style:none;padding:0;margin:2rem 0 5rem}
+.postlist li[hidden]{display:none}
 .postlist li{display:grid;grid-template-columns:1fr 180px 130px;gap:16px;align-items:baseline;
   padding:.8rem 0;border-bottom:1px solid var(--hair)}
 .postlist li a{color:var(--ink);font-weight:500}
