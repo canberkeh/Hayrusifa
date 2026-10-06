@@ -8820,21 +8820,6 @@
     "kaynak_url": "https://hayrusifa.com.tr/hacamat-nedir-ve-hangi-hastaliklarda-uygulanir/"
   },
   {
-    "slug": "2026-hacamat-gunleri",
-    "baslik": "2026 Hacamat Günleri",
-    "tarih": "2026-10-06",
-    "bolum": "Tedavi Yöntemleri",
-    "ana_kategori": "hicri-hacamat-gunleri",
-    "ana_kategori_adi": "Hicri Hacamat Günleri",
-    "alt_konu": "genel-yazi",
-    "hastaliklar": "",
-    "lokasyon": "",
-    "kelime_sayisi": 835,
-    "gorsel_sayisi": 0,
-    "wp_kategoriler": "Genel | Hacamat | Hastalıklarda Tedavi",
-    "kaynak_url": "https://hayrusifa.com.tr/2026-hacamat-gunleri/"
-  },
-  {
     "slug": "2027-hacamat-gunleri",
     "baslik": "2027 Hacamat Günleri",
     "tarih": "2026-10-06",
@@ -8848,5 +8833,20 @@
     "gorsel_sayisi": 0,
     "wp_kategoriler": "Genel | Hacamat | Hastalıklarda Tedavi",
     "kaynak_url": "https://hayrusifa.com.tr/2027-hacamat-gunleri/"
+  },
+  {
+    "slug": "2026-hacamat-gunleri",
+    "baslik": "2026 Hacamat Günleri",
+    "tarih": "2026-10-06",
+    "bolum": "Tedavi Yöntemleri",
+    "ana_kategori": "hicri-hacamat-gunleri",
+    "ana_kategori_adi": "Hicri Hacamat Günleri",
+    "alt_konu": "genel-yazi",
+    "hastaliklar": "",
+    "lokasyon": "",
+    "kelime_sayisi": 835,
+    "gorsel_sayisi": 0,
+    "wp_kategoriler": "Genel | Hacamat | Hastalıklarda Tedavi",
+    "kaynak_url": "https://hayrusifa.com.tr/2026-hacamat-gunleri/"
   }
 ]

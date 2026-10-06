@@ -15188,28 +15188,6 @@
     "meta_aciklama": "Türkiye'nin Hacamat Kliniği Hayru Şifa, İstanbul Ümraniye'den sonra çeşitli illerde hizmete başlamıştır. Ümraniye Hacamat Kliniği 34762 Ümraniye İstanbul"
   },
   {
-    "slug": "2026-hacamat-gunleri",
-    "baslik": "2026 Hacamat Günleri",
-    "tur": "yazi",
-    "url": "https://hayrusifa.com.tr/2026-hacamat-gunleri/",
-    "tarih": "2026-10-06",
-    "guncelleme": "2026-10-06",
-    "wp_kategoriler": [
-      "Genel",
-      "Hacamat",
-      "Hastalıklarda Tedavi"
-    ],
-    "wp_kategori_yollari": [
-      "Genel",
-      "Hacamat",
-      "Hastalıklarda Tedavi"
-    ],
-    "wp_etiket_sayisi": 0,
-    "kelime_sayisi": 835,
-    "gorsel_sayisi": 0,
-    "meta_aciklama": "2026 hacamat günleri: Hicri ayın 17, 19 ve 21. günlerinin 2026 yılı için miladi takvimdeki karşılıkları, ay ay güncel hacamat takvimi."
-  },
-  {
     "slug": "2027-hacamat-gunleri",
     "baslik": "2027 Hacamat Günleri",
     "tur": "yazi",
@@ -15230,5 +15208,27 @@
     "kelime_sayisi": 817,
     "gorsel_sayisi": 0,
     "meta_aciklama": "2027 hacamat günleri: Hicri ayın 17, 19 ve 21. günlerinin 2027 yılı için miladi takvimdeki karşılıkları, ay ay güncel hacamat takvimi."
+  },
+  {
+    "slug": "2026-hacamat-gunleri",
+    "baslik": "2026 Hacamat Günleri",
+    "tur": "yazi",
+    "url": "https://hayrusifa.com.tr/2026-hacamat-gunleri/",
+    "tarih": "2026-10-06",
+    "guncelleme": "2026-10-06",
+    "wp_kategoriler": [
+      "Genel",
+      "Hacamat",
+      "Hastalıklarda Tedavi"
+    ],
+    "wp_kategori_yollari": [
+      "Genel",
+      "Hacamat",
+      "Hastalıklarda Tedavi"
+    ],
+    "wp_etiket_sayisi": 0,
+    "kelime_sayisi": 835,
+    "gorsel_sayisi": 0,
+    "meta_aciklama": "2026 hacamat günleri: Hicri ayın 17, 19 ve 21. günlerinin 2026 yılı için miladi takvimdeki karşılıkları, ay ay güncel hacamat takvimi."
   }
 ]
