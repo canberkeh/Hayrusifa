@@ -63,7 +63,8 @@
       '.strip-grid > *', '.cta-in > *', '.hero-copy > *',
       '.subsec', '.side-card', '.ci-row', '.map-card',
       '.post-feat', '.prose > h2', '.post-cta', '.pn-wrap',
-      '.page-head > *', '.linklist'
+      '.page-head > *', '.linklist',
+      '.video-embed', '.t-grid > *', '.t-rating', '.contact-cta', '.hours'
     ].join(',');
 
     var io = new IntersectionObserver(function (entries) {
