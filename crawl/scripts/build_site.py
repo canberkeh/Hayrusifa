@@ -365,7 +365,6 @@ def header(active=""):
       <a href="/blog/"{' class="on"' if active=='blog' else ''}>Blog</a>
       <a href="/hakkimizda.html"{' class="on"' if active=='hakkimizda' else ''}>Hakkımızda</a>
       <a href="/iletisim.html"{' class="on"' if active=='iletisim' else ''}>İletişim</a>
-      <a class="btn btn-sm nav-cta" href="/iletisim.html#randevu">Randevu</a>
     </nav>
   </div>
 </header>
@@ -722,14 +721,15 @@ def video_embed(src, title, poster=None):
             f'<a href="{e(src)}">Videoyu indirin</a>.</video>'
             f'<figcaption>{e(title)}</figcaption></figure>')
 
-def simple_page(slug, title, active, intro, body_html, note=None, eyebrow="Kurumsal", meta_desc=None, extra_html=""):
+def simple_page(slug, title, active, intro, body_html, note=None, eyebrow="Kurumsal", meta_desc=None, extra_html="", narrow=True):
     h = head(f"{title} | Hayru Şifa", (meta_desc or intro)[:180], f"/{slug}.html")
     h += header(active)
     h += breadcrumb([("Anasayfa", "/"), (title, None)])
+    cls = "wrap narrow prose" if narrow else "wrap prose prose-wide"
     h += f"""<main id="main">
 <section class="wrap page-head">{f'<p class="eyebrow">{e(eyebrow)}</p>' if eyebrow else ''}<h1>{e(title)}</h1>
 {f'<p class="lead">{e(intro)}</p>' if intro else ''}</section>
-<section class="wrap narrow prose">
+<section class="{cls}">
 {f'<p class="note">{e(note)}</p>' if note else ''}
 {body_html}
 </section>
@@ -801,7 +801,7 @@ konforlu ve profesyonel bir ortamda ağırlamaktan memnuniyet duyuyoruz.</p>
                 "", hakkimizda_body, eyebrow="",
                 meta_desc="10 yılı aşkın tecrübe, 400.000'den fazla danışan deneyimi ile "
                           "sağlık ve tamamlayıcı tıp alanında hizmet veriyoruz.",
-                extra_html=testimonials_section())
+                extra_html=testimonials_section(), narrow=False)
 
     yorum_note = "Hasta yorumları eski siteden aktarılamadı. Gerçek hasta geri bildirimleri buraya eklenecek."
     simple_page("hasta-yorumlari", "Hasta Yorumları", "",
