@@ -486,7 +486,6 @@ def build_home():
          akupunktur ve mezoterapi gibi uygulamaları hekim gözetiminde, steril koşullarda sunuyoruz.</p>
       <div class="hero-cta">
         <a class="btn" href="/iletisim.html#randevu">Randevu Oluştur</a>
-        <a class="btn btn-ghost" href="/blog/">Tedavi Yöntemleri</a>
       </div>
       {lotus}
     </div>
