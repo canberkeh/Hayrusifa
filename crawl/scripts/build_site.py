@@ -722,7 +722,7 @@ def video_embed(src, title, poster=None):
             f'<a href="{e(src)}">Videoyu indirin</a>.</video>'
             f'<figcaption>{e(title)}</figcaption></figure>')
 
-def simple_page(slug, title, active, intro, body_html, note=None, eyebrow="Kurumsal", meta_desc=None):
+def simple_page(slug, title, active, intro, body_html, note=None, eyebrow="Kurumsal", meta_desc=None, extra_html=""):
     h = head(f"{title} | Hayru Şifa", (meta_desc or intro)[:180], f"/{slug}.html")
     h += header(active)
     h += breadcrumb([("Anasayfa", "/"), (title, None)])
@@ -733,9 +733,55 @@ def simple_page(slug, title, active, intro, body_html, note=None, eyebrow="Kurum
 {f'<p class="note">{e(note)}</p>' if note else ''}
 {body_html}
 </section>
+{extra_html}
 </main>"""
     h += footer()
     write(f"{slug}.html", h)
+
+# Google Haritalar'dan seçilmiş, gerçek ve olumlu yorumlar (isimler kısaltılmıştır)
+GOOGLE_PLACE_URL = ("https://www.google.com/maps/place/İstanbul+Ümraniye+Üsküdar+Hacamat+"
+                     "Hayru+Şifa+Doğal+Tedaviler/@41.016104,29.0729194,17z/data=!4m8!3m7!"
+                     "1s0x14cac8f0b980299d:0xb546503ad584faf3!8m2!3d41.016104!4d29.0754943!"
+                     "9m1!1b1!16s%2Fg%2F11ggs8zbdx")
+GOOGLE_RATING = {"puan": "4,3", "adet": "99"}
+GOOGLE_REVIEWS = [
+    dict(isim="R*** G***", puan=5, tarih="9 ay önce",
+         yorum="Uzun zamandır hacamat yaptırmak istiyordum fakat güvenli ve temiz bir yer "
+               "bulamadığım için hep erteliyordum. Tavsiye üzerine bu kliniğe geldim ve iyi ki "
+               "gelmişim. Hijyen konusunda son derece titizler, kullanılan tüm malzemeler tek…"),
+    dict(isim="T*** K***", puan=5, tarih="9 ay önce",
+         yorum="Eşimle beraber geldik doktor bey çok güler yüzlü ve ilgiliydi. Danışman ve diğer "
+               "personeller güler yüzlü ve samimiydi. İşlem olarak hacamat yaptırdık ve ondan da "
+               "memnun kaldık. Tekrar geleceğiz."),
+    dict(isim="H*** H***", puan=5, tarih="9 ay önce",
+         yorum="Hacamat için düzenli gittiğim klinik, ortam olarak ferah, çalışanlar güler yüzlü. "
+               "Saç güçlendirme için PRP tedavisi uygulanıyor, seansa başladığımızdan beri gözle "
+               "görülür fark mevcut. Her şey için teşekkür ederim."),
+    dict(isim="S*** Ş***", puan=5, tarih="3 ay önce",
+         yorum="Bütün ağrılarımdan kurtuldum, özellikle de çok ilgili ve hijyenik çalıştılar. "
+               "Hepsine teşekkür ederim."),
+]
+
+def testimonials_section():
+    def stars(n):
+        return '<span class="t-stars" aria-hidden="true">' + ("★" * n) + ("☆" * (5 - n)) + '</span>'
+    cards = "".join(f"""<figure class="t-card">
+      {stars(r['puan'])}
+      <blockquote>{e(r['yorum'])}</blockquote>
+      <figcaption><span class="t-name">{e(r['isim'])}</span><span class="t-date">Google Yorumu · {e(r['tarih'])}</span></figcaption>
+    </figure>""" for r in GOOGLE_REVIEWS)
+    return f"""<section class="wrap band testimonials">
+  <div class="band-head">
+    <p class="eyebrow">Danışan Yorumları</p>
+    <h2>Google'daki değerlendirmeler</h2>
+    <a class="t-rating" href="{e(GOOGLE_PLACE_URL)}" target="_blank" rel="noopener">
+      {stars(5)}<strong>{e(GOOGLE_RATING['puan'])}</strong><span>/ 5 · {e(GOOGLE_RATING['adet'])} Google yorumu →</span>
+    </a>
+  </div>
+  <div class="t-grid">{cards}</div>
+  <p class="muted sm center">Gizlilik için danışan adları kısaltılmıştır. Yorumlar Google Haritalar üzerinden
+    herkese açık olarak paylaşılmıştır ve klinik tarafından seçilmiştir.</p>
+</section>"""
 
 def build_institutional():
     hakkimizda_body = """
@@ -754,7 +800,8 @@ konforlu ve profesyonel bir ortamda ağırlamaktan memnuniyet duyuyoruz.</p>
     simple_page("hakkimizda", "Hakkımızda", "hakkimizda",
                 "", hakkimizda_body, eyebrow="",
                 meta_desc="10 yılı aşkın tecrübe, 400.000'den fazla danışan deneyimi ile "
-                          "sağlık ve tamamlayıcı tıp alanında hizmet veriyoruz.")
+                          "sağlık ve tamamlayıcı tıp alanında hizmet veriyoruz.",
+                extra_html=testimonials_section())
 
     yorum_note = "Hasta yorumları eski siteden aktarılamadı. Gerçek hasta geri bildirimleri buraya eklenecek."
     simple_page("hasta-yorumlari", "Hasta Yorumları", "",
